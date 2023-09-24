@@ -6,6 +6,7 @@ const Favorites = () => {
   const [noFound, setNoFound] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
   const [isShow, setIsShow] = useState(false);
+
   useEffect(() => {
     const addedFavoriteItems = JSON.parse(localStorage.getItem("favorites"));
     if (addedFavoriteItems) {
@@ -59,14 +60,16 @@ const Favorites = () => {
           ))}
         </div>
       )}
-      <div className='flex justify-center p-5'>
-        <button
-          onClick={() => setIsShow(!isShow)}
-          className='bg-green-300 px-2 py-1 rounded-md'
-        >
-          {isShow ? "See less" : "See more"}
-        </button>
-      </div>
+      {favorites.length > 2 && (
+        <div className='flex justify-center p-5'>
+          <button
+            onClick={() => setIsShow(!isShow)}
+            className='bg-green-300 px-2 py-1 rounded-md'
+          >
+            {isShow ? "See less" : "See more"}
+          </button>
+        </div>
+      )}
     </div>
   );
 };
